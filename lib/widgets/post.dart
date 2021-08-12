@@ -37,7 +37,6 @@ class Post extends StatelessWidget {
         ),
         Container(
           height: 450,
-          color: Colors.red,
           child: Image.asset(
             srcPhotoPost,
             fit: BoxFit.cover,
