@@ -1,7 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:instagram_ui_clone/models/storie.dart';
 import 'package:instagram_ui_clone/models/storieData.dart';
 import 'package:instagram_ui_clone/widgets/storie_item.dart';
 

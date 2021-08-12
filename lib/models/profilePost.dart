@@ -1,5 +1,3 @@
-import 'package:faker/faker.dart';
-
 class ProfilePost {
   final String name;
   final String srcPhotoProfile;

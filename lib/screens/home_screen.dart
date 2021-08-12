@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:instagram_ui_clone/models/profilePost.dart';
-import 'package:instagram_ui_clone/models/storie.dart';
 import 'package:instagram_ui_clone/models/storieData.dart';
 import 'package:instagram_ui_clone/widgets/header.dart';
 import 'package:instagram_ui_clone/widgets/post.dart';
 import 'package:instagram_ui_clone/widgets/stories.dart';
 
 class HomeScreen extends StatefulWidget {
-  ThemeMode Function() chageThemeMode;
+  final void Function() chageThemeMode;
 
   HomeScreen({Key? key, required this.chageThemeMode}) : super(key: key);
 

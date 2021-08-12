@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AppbarCustom extends StatelessWidget with PreferredSizeWidget {
-  final ThemeMode Function() chageThemeMode;
+  final void Function() chageThemeMode;
 
   AppbarCustom({
     Key? key,
@@ -66,6 +66,5 @@ class AppbarCustom extends StatelessWidget with PreferredSizeWidget {
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => Size.fromHeight(56);
 }

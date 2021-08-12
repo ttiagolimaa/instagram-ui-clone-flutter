@@ -1,5 +1,3 @@
-import 'package:faker/faker.dart';
-
 class Storie {
   final String name;
   final String srcPhoto;

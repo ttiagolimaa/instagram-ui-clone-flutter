@@ -13,12 +13,11 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   ThemeMode themeMode = ThemeMode.light;
 
-  ThemeMode changeThemeMode() {
+  void changeThemeMode() {
     setState(() {
       themeMode =
           themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
     });
-    return themeMode;
   }
 
   @override
