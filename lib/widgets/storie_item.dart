@@ -29,7 +29,6 @@ class StorieItem extends StatelessWidget {
                 width: 69,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(60),
-                  color: Colors.red,
                   gradient: isLive || isProfile
                       ? LinearGradient(
                           colors: [Color(0xff5B00C4), Color(0xffD00049)],
@@ -48,7 +47,7 @@ class StorieItem extends StatelessWidget {
                 width: 62,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(60),
-                  color: Colors.white,
+                  color: Theme.of(context).scaffoldBackgroundColor,
                 ),
               ),
               Align(
@@ -66,14 +65,13 @@ class StorieItem extends StatelessWidget {
                     padding: EdgeInsets.all(2),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.white,
+                      color: Theme.of(context).scaffoldBackgroundColor,
                     ),
                     child: CircleAvatar(
                       backgroundColor: Colors.blue,
-                      // radius: 13,
                       child: Icon(
                         Icons.add,
-                        color: Colors.white,
+                        color: Theme.of(context).iconTheme.color,
                       ),
                     ),
                   ),

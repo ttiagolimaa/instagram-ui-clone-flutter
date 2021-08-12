@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:instagram_ui_clone/models/profilePost.dart';
 import 'package:instagram_ui_clone/models/storie.dart';
 import 'package:instagram_ui_clone/models/storieData.dart';
 import 'package:instagram_ui_clone/widgets/header.dart';
@@ -7,27 +8,30 @@ import 'package:instagram_ui_clone/widgets/post.dart';
 import 'package:instagram_ui_clone/widgets/stories.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  ThemeMode Function() chageThemeMode;
+
+  HomeScreen({Key? key, required this.chageThemeMode}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<Storie> listProfiles = StorieData.listStories
+  final List<ProfilePost> listProfiles = StorieData.listStories
       .skipWhile((value) => value.isProfile == true)
-      .toList()
-        ..shuffle();
-
-  String getRandomImageSrc() {
+      .map((e) {
     final number = faker.randomGenerator.integer(6, min: 1);
-    return 'assets/images/post$number.jpeg';
-  }
+    final srcPhotoPost = 'assets/images/post$number.jpeg';
+    return ProfilePost(
+        name: e.name, srcPhotoProfile: e.srcPhoto, srcPhotoPost: srcPhotoPost);
+  }).toList();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarCustom(),
+      appBar: AppbarCustom(
+        chageThemeMode: widget.chageThemeMode,
+      ),
       body: RefreshIndicator(
         onRefresh: () async {
           await Future.delayed(Duration(milliseconds: 500));
@@ -41,8 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
               Stories(),
               ...listProfiles.take(5).map((e) => Post(
                   userName: e.name,
-                  srcPhotoProfile: e.srcPhoto,
-                  srcPhotoPost: getRandomImageSrc()))
+                  srcPhotoProfile: e.srcPhotoProfile,
+                  srcPhotoPost: e.srcPhotoPost))
             ],
           ),
         ),
@@ -58,6 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 'assets/svg/Home.svg',
                 height: 25,
                 width: 25,
+                color: Theme.of(context).iconTheme.color,
               ),
               label: ''),
           BottomNavigationBarItem(
@@ -65,6 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 'assets/svg/Search.svg',
                 height: 25,
                 width: 25,
+                color: Theme.of(context).iconTheme.color,
               ),
               label: ''),
           BottomNavigationBarItem(
@@ -72,6 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 'assets/svg/Reels.svg',
                 height: 23,
                 width: 23,
+                color: Theme.of(context).iconTheme.color,
               ),
               label: ''),
           BottomNavigationBarItem(
@@ -80,6 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 'assets/svg/Shop.svg',
                 height: 25,
                 width: 25,
+                color: Theme.of(context).iconTheme.color,
               ),
               label: ''),
           BottomNavigationBarItem(

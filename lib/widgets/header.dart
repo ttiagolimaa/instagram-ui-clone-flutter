@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AppbarCustom extends StatelessWidget with PreferredSizeWidget {
+  final ThemeMode Function() chageThemeMode;
+
+  AppbarCustom({
+    Key? key,
+    required this.chageThemeMode,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -14,16 +21,22 @@ class AppbarCustom extends StatelessWidget with PreferredSizeWidget {
               'assets/svg/Instagram_logo.svg',
               fit: BoxFit.cover,
               height: 56,
-              color: Colors.black,
+              color: Theme.of(context).iconTheme.color,
             ),
             Row(
               children: [
+                IconButton(
+                    onPressed: chageThemeMode,
+                    icon: Icon(Theme.of(context).iconTheme.color == Colors.white
+                        ? Icons.light_mode
+                        : Icons.dark_mode)),
                 IconButton(
                   onPressed: () {},
                   icon: SvgPicture.asset(
                     'assets/svg/Add-Icon-Filled.svg',
                     height: 20,
                     width: 20,
+                    color: Theme.of(context).iconTheme.color,
                   ),
                 ),
                 IconButton(
@@ -32,14 +45,16 @@ class AppbarCustom extends StatelessWidget with PreferredSizeWidget {
                     'assets/svg/Heart.svg',
                     height: 20,
                     width: 20,
+                    color: Theme.of(context).iconTheme.color,
                   ),
                 ),
                 IconButton(
                   onPressed: () {},
                   icon: SvgPicture.asset(
                     'assets/svg/Union.svg',
-                    height: 20,
-                    width: 20,
+                    height: 17,
+                    width: 17,
+                    color: Theme.of(context).iconTheme.color,
                   ),
                 ),
               ],
