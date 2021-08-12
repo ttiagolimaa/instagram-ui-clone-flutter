@@ -1,22 +1,18 @@
 import 'package:faker/faker.dart';
 
 class Storie {
-  late final String name;
-  late final String urlPhoto;
+  final String name;
+  final String srcPhoto;
   final bool isLive;
   final bool isProfile;
 
-  Storie(
-      {String? name, urlPhoto, this.isLive = false, this.isProfile = false}) {
-    this.name = name ?? faker.person.firstName();
-    this.urlPhoto = urlPhoto ??
-        faker.image.image(
-            height: 100,
-            width: 100,
-            keywords: ['face', 'people', 'man', 'woman'],
-            random: true);
-  }
+  Storie({
+    required this.name,
+    required this.srcPhoto,
+    this.isLive = false,
+    this.isProfile = false,
+  });
 
   @override
-  String toString() => 'StorieData(name: $name, urlPhoto: $urlPhoto)';
+  String toString() => 'StorieData(name: $name, urlPhoto: $srcPhoto)';
 }

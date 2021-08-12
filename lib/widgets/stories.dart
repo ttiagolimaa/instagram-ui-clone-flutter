@@ -28,7 +28,7 @@ class Stories extends StatelessWidget {
             separatorBuilder: (context, index) => SizedBox(width: 16),
             itemBuilder: (context, index) => StorieItem(
               name: storiesList[index].name,
-              urlPhoto: storiesList[index].urlPhoto,
+              srcPhoto: storiesList[index].srcPhoto,
               isLive: storiesList[index].isLive,
               isProfile: storiesList[index].isProfile,
             ),

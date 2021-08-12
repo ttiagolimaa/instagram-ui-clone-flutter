@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
 import 'package:instagram_ui_clone/models/storieData.dart';
 
 class Post extends StatelessWidget {
-  Post({Key? key}) : super(key: key);
+  final String userName;
+  final String srcPhotoProfile;
+  final String srcPhotoPost;
 
-  final String userName = faker.internet.userName();
+  Post({
+    Key? key,
+    required this.userName,
+    required this.srcPhotoProfile,
+    required this.srcPhotoPost,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,16 +24,7 @@ class Post extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
           child: Row(
             children: [
-              CircleAvatar(
-                backgroundImage: NetworkImage(
-                  faker.image.image(
-                    height: 60,
-                    width: 60,
-                    keywords: ['face'],
-                    random: true,
-                  ),
-                ),
-              ),
+              CircleAvatar(backgroundImage: Image.asset(srcPhotoProfile).image),
               SizedBox(width: 8),
               Text(
                 userName,
@@ -36,17 +35,7 @@ class Post extends StatelessWidget {
             ],
           ),
         ),
-        Image.network(
-          faker.image.image(
-            height: 700,
-            width: 700,
-            keywords: ['nature', 'dog'],
-            random: true,
-          ),
-          fit: BoxFit.fitWidth,
-          cacheHeight: 700,
-          cacheWidth: 700,
-        ),
+        Image.asset(srcPhotoPost),
         Row(
           children: [
             IconButton(

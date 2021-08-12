@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class StorieItem extends StatelessWidget {
   final String name;
-  final String urlPhoto;
+  final String srcPhoto;
   final bool isLive;
   final bool isProfile;
 
   StorieItem({
     Key? key,
     required this.name,
-    required this.urlPhoto,
+    required this.srcPhoto,
     required this.isLive,
     required this.isProfile,
   }) : super(key: key);
@@ -54,9 +54,7 @@ class StorieItem extends StatelessWidget {
               Align(
                 child: CircleAvatar(
                   maxRadius: 29,
-                  backgroundImage: isProfile
-                      ? Image.asset('assets/images/avatar.jpg').image
-                      : NetworkImage(urlPhoto),
+                  backgroundImage: Image.asset(srcPhoto).image,
                 ),
               ),
               if (isProfile)
